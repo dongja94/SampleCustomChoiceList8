@@ -1,7 +1,7 @@
 package com.example.dongja94.samplecustomchoicelist;
 
 import android.content.Context;
-import android.graphics.Color;
+import android.view.View;
 import android.widget.Checkable;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -17,12 +17,13 @@ public class ItemView extends FrameLayout implements Checkable {
     }
 
     TextView messageView;
-    ImageView checkView;
+    ImageView checkView, checkedImage;
 
     private void init() {
         inflate(getContext(), R.layout.view_item, this);
         messageView = (TextView)findViewById(R.id.text_message);
         checkView = (ImageView)findViewById(R.id.image_check);
+        checkedImage = (ImageView)findViewById(R.id.checked_image);
     }
 
     public void setText(String text) {
@@ -34,11 +35,14 @@ public class ItemView extends FrameLayout implements Checkable {
     private void drawCheck() {
         if (isChecked) {
 //            checkView.setImageResource(android.R.drawable.checkbox_on_background);
-            setBackgroundColor(Color.RED);
+//            setBackgroundColor(Color.RED);
+            checkedImage.setVisibility(View.VISIBLE);
         } else {
 //            checkView.setImageResource(android.R.drawable.checkbox_off_background);
-            setBackgroundColor(Color.TRANSPARENT);
+//            setBackgroundColor(Color.TRANSPARENT);
+            checkedImage.setVisibility(View.GONE);
         }
+
     }
 
     @Override
